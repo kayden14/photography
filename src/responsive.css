@@ -66,10 +66,17 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  flex-wrap: nowrap;
 }
 
 .a-nav-list .a-nav-link-wrapper {
   margin: 0;
+}
+
+/* Ensure text links inside the header never wrap and stay inline */
+.a-nav-list .a-text-link,
+.a-nav-list .a-nav-link {
+  white-space: nowrap;
 }
 
 .a-mobile-nav-toggle {
