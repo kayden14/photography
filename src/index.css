@@ -1,0 +1,25 @@
+/* Portfolio reset — defer all styling to the original portfolio stylesheet */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Let #root be full-bleed — the portfolio has its own layout system */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Prevent default browser cursor when custom cursor is active */
+@media (hover: hover) and (pointer: fine) {
+  html, body, * {
+    cursor: none !important;
+  }
+}

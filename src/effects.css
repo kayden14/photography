@@ -1,0 +1,386 @@
+/* =============================================================================
+   effects.css — React-specific supplements to the original portfolio stylesheet.
+   The base styles (Bootstrap, typography, layout, colours) all come from:
+   public/style.8483d983eb5afeb566ad.css  (loaded via index.html)
+   Only things NOT in that file should live here.
+   ============================================================================= */
+
+/* ── Custom Cursor — crosshair architecture ────────────────────────────────── */
+
+/* Horizontal full-width crosshair line */
+.a-mouse-horizonatal-line {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 1px;
+  background: rgba(225, 230, 225, 0.28);
+  pointer-events: none;
+  z-index: 99990;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+/* Vertical full-height crosshair line */
+.a-mouse-vertical-line {
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100vh;
+  background: rgba(225, 230, 225, 0.28);
+  pointer-events: none;
+  z-index: 99990;
+  transform: translateX(-50%);
+  transition: opacity 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+/* Lines hidden when hovering video / link elements */
+.a-mouse-line-hidden {
+  opacity: 0 !important;
+}
+
+/* Circular dot that follows the mouse */
+.a-mouse-main-wrapper {
+  pointer-events: none;
+  z-index: 99995;
+  transform: translate(-50%, -50%);
+}
+
+.a-mouse-container {
+  overflow: visible;
+}
+
+/* All three content states (basic / video / links) */
+.a-mouse-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.a-mouse-hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* Video cursor — circular play button */
+.a-mouse-video-content {
+  width: 80px;
+  height: 80px;
+}
+.a-mouse-video-content svg {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 0 8px rgba(0,0,0,0.5));
+}
+
+/* Hide cursor elements on touch/tablet */
+@media (hover: none) and (pointer: coarse),
+       only screen and (max-width: 992px) {
+  .a-mouse-horizonatal-line,
+  .a-mouse-vertical-line,
+  .a-mouse-main-wrapper {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* ── Global cursor override (hide browser cursor on desktop) ──────────────── */
+@media (hover: hover) and (pointer: fine) {
+  html, body, * {
+    cursor: none !important;
+  }
+}
+
+/* ── Scroll-driven intersection animations ────────────────────────────────── */
+/* Fade-in triggered by useScrollAnimations hook */
+[data-anime="intersection"] {
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* ── Works image hover (supplement — original CSS handles the base state) ─── */
+.a-works-image-wrapper {
+  overflow: hidden;
+}
+
+/* Corner bracket indicators — positioned by the original CSS, revealed here */
+.a-works-image-wrapper:hover .a-work-hover-indicator {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Footer image cover ───────────────────────────────────────────────────── */
+.a-footer-image {
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ── Header backdrop blur (not in original minified CSS) ─────────────────── */
+.a-header-wrapper {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ── Preview overlay — ensure it sits above everything ───────────────────── */
+.a-preview-wrapper {
+  top: 0;
+  left: 0;
+}
+
+/* ── Timeline thumbnail images — ensure they are fully visible ───────────── */
+.a-timeline-item-img {
+  display: block;
+  width: 9vw;
+  height: auto;
+  min-width: 80px;
+  object-fit: cover;
+  opacity: 1 !important;
+}
+
+/* ── Selected works images — crisp, full-width ───────────────────────────── */
+.a-selected-works-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  opacity: 1 !important;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* ── About profile image — sharp rendering ───────────────────────────────── */
+.a-about-image {
+  image-rendering: -webkit-optimize-contrast;
+  display: block;
+}
+
+/* ── Hero entrance animations ─────────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.a-hero-title    { animation: fadeSlideUp 0.9s ease 0.1s both; }
+.a-hero-name     { animation: fadeSlideUp 0.9s ease 0.5s both; }
+.a-timeline-wrapper { animation: fadeSlideUp 0.9s ease 0.8s both; }
+
+/* ── Timeline indicator pulse ─────────────────────────────────────────────── */
+@keyframes pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1);   }
+  50%       { opacity: 1;    transform: scale(1.35);}
+}
+.a-timeline-indicator-head {
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+/* ── Footer gradient overlay ──────────────────────────────────────────────── */
+.a-footer-section-wrapper .a-footer-content {
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+}
+
+/* ── Works-page preview strip images ─────────────────────────────────────── */
+.a-works-preview-video,
+.a-works-preview-image {
+  display: block;
+  width: 44vh;
+  height: auto;
+  object-fit: cover;
+  opacity: 1 !important;
+}
+
+/* ── Hero background video (YouTube iframe, full-screen cinematic) ──────── */
+.a-hero-bg-video-wrapper {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Scale-up trick: video covers edge-to-edge using object-fit */
+.a-hero-bg-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border: none;
+  pointer-events: none;
+}
+
+/* Dark gradient overlay so hero text stays legible */
+.a-hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.35) 50%,
+    rgba(0, 0, 0, 0.72) 100%
+  );
+  z-index: 1;
+}
+
+/* Keep hero content (text, timeline) above the video layer */
+.a-hero-section-wrapper > *:not(.a-hero-bg-video-wrapper) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure hero section has a black background as fallback while video loads */
+.a-hero-section-wrapper {
+  background-color: #000;
+}
+
+/* Add horizontal padding back to the hero content (removed from section for video edge-to-edge) */
+.a-hero-section-wrapper > div {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ── Slideshow Section Styling ── */
+.a-slideshow-section-wrapper {
+  background-color: #080808 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+.a-slideshow-image-container {
+  height: 650px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9);
+  background-color: #050505;
+}
+
+.a-slideshow-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              visibility 1s;
+  transform: scale(1.04);
+}
+
+.a-slideshow-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.a-slideshow-slide img {
+  filter: none !important;
+  opacity: 1 !important;
+  transition: filter 0.5s ease;
+}
+
+.a-slideshow-btn {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.a-slideshow-btn:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+  transform: scale(1.05);
+}
+
+.a-slideshow-thumb-strip {
+  display: flex;
+  gap: 16px;
+  margin-top: 25px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: none; /* Firefox */
+}
+.a-slideshow-thumb-strip::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.a-slideshow-thumb-item {
+  width: 110px;
+  height: 73px;
+  flex-shrink: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  opacity: 0.6;
+  cursor: none;
+  border: 2px solid transparent;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.a-slideshow-thumb-item img {
+  filter: none !important;
+}
+
+.a-slideshow-thumb-item:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.a-slideshow-thumb-item.active {
+  opacity: 1;
+  border-color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+.a-slideshow-info-box {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.a-slideshow-number {
+  font-family: monospace;
+  color: #888;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.a-slideshow-title {
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  transition: opacity 0.5s ease;
+}
+
+.a-slideshow-desc {
+  color: #888;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-weight: 300;
+  transition: opacity 0.5s ease;
+}
