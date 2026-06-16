@@ -329,6 +329,13 @@
   padding-right: 1.5rem;
 }
 
+@media (max-width: 1024px) {
+  .a-hero-section-wrapper > div {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
 @media (max-width: 768px) {
   .a-hero-section-wrapper > div {
     padding-left: 1rem;
@@ -336,10 +343,17 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .a-hero-section-wrapper > div {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .a-hero-section-wrapper > div {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 
