@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Header from '../components/Header';
 import { useScrollAnimations } from '../hooks/useScrollAnimations';
 import { useTextScramble } from '../hooks/useTextScramble';
 import { useLazyImages, useImageHoverEffects, useVideoPreview } from '../hooks/useImageEffects';
@@ -14,30 +15,16 @@ export default function Works() {
   return (
     <>
       
-    <header className="position-fixed a-header-wrapper vw-100 px-0">
-      <ul
-        className="container-fluid d-flex align-items-center justify-content-between a-header-size px-4"
-      >
-        <li className="a-nav-link-wrapper">
-          <a
-            href="/"
-            className="a-nav-link a-text-link a-nav-logo-link"
-            data-mouse="link"
-            >FAITH</a
-          >
-        </li>
-        <li className="a-nav-link-wrapper">
-          <a
-            href="/"
-            className="a-nav-link a-nav-scroll-link a-text-link a-font-mono"
-            data-anime="scramble"
-            data-mouse="link"
-            data-target="about"
-            >HOME</a
-          >
-        </li>
-      </ul>
-    </header>
+      <Header
+        links={[
+          {
+            href: '/',
+            label: 'HOME',
+            extraClass: 'a-nav-scroll-link a-font-mono',
+            dataAnime: true,
+          },
+        ]}
+      />
     <div className="a-body-scroll-container">
       <div className="a-body-main-wrap">
         <section

@@ -7,6 +7,7 @@ import { useSmoothScroll } from '../hooks/useSmoothScroll';
 import { useServiceHover } from '../hooks/useServiceHover';
 import { useHeroVideoHover } from '../hooks/useHeroVideoHover';
 import { useTimelineStrips } from '../hooks/useTimelineStrips';
+import Header from '../components/Header';
 
 export default function Home() {
   useScrollAnimations();
@@ -56,53 +57,35 @@ export default function Home() {
       alt="Website Image"
       role="Website Image"
     />
-    <header className="position-fixed a-header-wrapper vw-100 px-0">
-      <ul
-        className="container-fluid d-flex align-items-center justify-content-between a-header-size px-4"
-      >
-        <li className="a-nav-link-wrapper">
-          <a
-            href="/"
-            className="a-nav-link a-text-link a-nav-logo-link"
-            data-mouse="link"
-            >FAITH</a
-          >
-        </li>
-        <li className="a-nav-link-wrapper">
-          <a
-            href="/#about"
-            className="a-nav-link a-text-link a-font-mono"
-            data-anime="scramble"
-            data-mouse="link"
-            data-navigation="scroll"
-            data-target="about"
-            >ABOUT</a
-          >
-        </li>
-        <li className="a-nav-link-wrapper">
-          <a
-            href="/#works"
-            className="a-nav-link a-text-link a-font-mono"
-            data-anime="scramble"
-            data-mouse="link"
-            data-navigation="scroll"
-            data-target="works"
-            >WORKS</a
-          >
-        </li>
-        <li className="a-nav-link-wrapper">
-          <a
-            href="/#contact"
-            className="a-nav-link a-text-link a-font-mono"
-            data-anime="scramble"
-            data-mouse="link"
-            data-navigation="scroll"
-            data-target="contact"
-            >CONTACT</a
-          >
-        </li>
-      </ul>
-    </header>
+      <Header
+        links={[
+          {
+            href: '/#about',
+            label: 'ABOUT',
+            extraClass: 'a-font-mono',
+            dataAnime: true,
+            dataNavigation: 'scroll',
+            dataTarget: 'about',
+          },
+          {
+            href: '/#works',
+            label: 'WORKS',
+            extraClass: 'a-font-mono',
+            dataAnime: true,
+            dataNavigation: 'scroll',
+            dataTarget: 'works',
+          },
+          {
+            href: '/#contact',
+            label: 'CONTACT',
+            extraClass: 'a-font-mono',
+            dataAnime: true,
+            dataNavigation: 'scroll',
+            dataTarget: 'contact',
+          },
+        ]}
+      />
+
     <div className="a-body-scroll-container">
       <div className="a-body-main-wrap">
         <section
