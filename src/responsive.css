@@ -48,6 +48,13 @@
 }
 
 .a-nav-link:focus-visible {
+    /* when opened on mobile, center the panel vertically over the hero/video */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   outline: 2px solid rgba(255, 255, 255, 0.65);
   outline-offset: 4px;
 }
@@ -356,8 +363,9 @@
 }
 
 @media (max-width: 768px) {
-  .a-section-wrapper {
-    padding-left: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     padding-right: 1rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
