@@ -169,8 +169,13 @@
   .a-nav-list.is-open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    /* when opened on mobile, center the panel vertically over the hero/video */
+    top: 50%;
+    transform: translateY(-50%);
     pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .a-nav-list .a-nav-link-wrapper {
@@ -363,9 +368,8 @@
 }
 
 @media (max-width: 768px) {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  .a-section-wrapper {
+    padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -394,8 +398,9 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
 
